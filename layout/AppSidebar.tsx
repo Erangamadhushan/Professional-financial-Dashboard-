@@ -342,3 +342,4 @@ const AppSidebar = () => {
         </aside>
     );
 }
+export default AppSidebar;
