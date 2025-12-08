@@ -6,48 +6,43 @@ import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 
 import {
-    BoxCubeIcon,
-    CalenderIcon,
-    ChevronDownIcon,
-    GridIcon,
-    HorizontaLDots,
-    ListIcon,
-    PageIcon,
-    PieChartIcon,
-    PlugInIcon,
-    TableIcon,
-    UserCircleIcon,
-  } from "../icons/index";
-  import SidebarWidget from "./SidebarWidget";
+  CalenderIcon,
+  ChevronDownIcon,
+  GridIcon,
+  HorizontaLDots,
+  PlugInIcon,
+  UserCircleIcon,
+} from "../icons/index";
+import SidebarWidget from "./SidebarWidget";
 
-  type NavItem = {
-    name: string;
-    icon: React.ReactNode;
-    path?: string;
-    subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
-  };
-  
-  const navItems: NavItem[] = [
-    {
-      icon: <GridIcon />,
-      name: "Dashboard",
-      subItems: [{ name: "Ecommerce", path: "/", pro: false }],
-    },
-    {
-      icon: <CalenderIcon />,
-      name: "Calendar",
-      path: "/calendar",
-    },
-    {
-      icon: <UserCircleIcon />,
-      name: "User Profile",
-      path: "/profile",
-    }
+type NavItem = {
+  name: string;
+  icon: React.ReactNode;
+  path?: string;
+  subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
+};
+
+const navItems: NavItem[] = [
+  {
+    icon: <Image src={GridIcon as string} alt="" className="" />,
+    name: "Dashboard",
+    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+  },
+  {
+    icon: <Image src={CalenderIcon as string} alt="" />,
+    name: "Calendar",
+    path: "/calendar",
+  },
+  {
+    icon: <Image src={UserCircleIcon as string} alt="" />,
+    name: "User Profile",
+    path: "/profile",
+  }
 ];
 
 const othersItems: NavItem[] = [
     {
-      icon: <PlugInIcon />,
+      icon: <Image src={PlugInIcon as string} alt="" />,
       name: "Authentication",
       subItems: [
         { name: "Sign In", path: "/signin", pro: false },
@@ -91,10 +86,10 @@ const AppSidebar = () => {
                     {nav.icon}
                   </span>
                   {(isExpanded || isHovered || isMobileOpen) && (
-                    <span className={`menu-item-text`}>{nav.name}</span>
+                    <span className={`menu-item-text text-white`}>{nav.name}</span>
                   )}
                   {(isExpanded || isHovered || isMobileOpen) && (
-                    <ChevronDownIcon
+                    <Image src={ChevronDownIcon as string} alt=""
                       className={`ml-auto w-5 h-5 transition-transform duration-200  ${
                         openSubmenu?.type === menuType &&
                         openSubmenu?.index === index
@@ -145,7 +140,7 @@ const AppSidebar = () => {
                       <li key={subItem.name}>
                         <Link
                           href={subItem.path}
-                          className={`menu-dropdown-item ${
+                          className={`menu-dropdown-item text-white ${
                             isActive(subItem.path)
                               ? "menu-dropdown-item-active"
                               : "menu-dropdown-item-inactive"
@@ -276,22 +271,22 @@ const AppSidebar = () => {
                 <>
                   <Image
                     className="dark:hidden"
-                    src="/images/logo/logo.svg"
+                    src="/images/logo/logo.png"
                     alt="Logo"
-                    width={150}
+                    width={50}
                     height={40}
                   />
                   <Image
                     className="hidden dark:block"
-                    src="/images/logo/logo-dark.svg"
+                    src="/images/logo/logo-dark.png"
                     alt="Logo"
-                    width={150}
+                    width={50}
                     height={40}
                   />
                 </>
               ) : (
                 <Image
-                  src="/images/logo/logo-icon.svg"
+                  src="/images/logo/logo-icon.png"
                   alt="Logo"
                   width={32}
                   height={32}
@@ -313,10 +308,12 @@ const AppSidebar = () => {
                     {isExpanded || isHovered || isMobileOpen ? (
                       "Menu"
                     ) : (
-                      <HorizontaLDots />
+                      <Image src={HorizontaLDots as string} alt="" />
                     )}
                   </h2>
-                  {renderMenuItems(navItems, "main")}
+                  {
+                    renderMenuItems(navItems, "main")
+                  }
                 </div>
     
                 <div className="">
@@ -330,10 +327,12 @@ const AppSidebar = () => {
                     {isExpanded || isHovered || isMobileOpen ? (
                       "Others"
                     ) : (
-                      <HorizontaLDots />
+                      <Image src={HorizontaLDots as string} alt="" />
                     )}
                   </h2>
-                  {renderMenuItems(othersItems, "others")}
+                  {
+                    renderMenuItems(othersItems, "others")
+                  }
                 </div>
               </div>
             </nav>

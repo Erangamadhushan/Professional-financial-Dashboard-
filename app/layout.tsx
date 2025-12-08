@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
-// import { SidebarProvider } from '@/context/SidebarContext';
-// import { ThemeProvider } from '@/context/ThemeContext';
+import { SidebarProvider } from '@/context/SidebarContext';
+import { ThemeProvider } from '@/context/ThemeContext';
 
 const outfit = Outfit({
   subsets: ["latin"]
@@ -25,14 +25,12 @@ export default function RootLayout({
       <body
         className={`${outfit.className} dark:bg-gray-900`}
       >
-        {children}
-        {/* 
           <ThemeProvider>
             <SidebarProvider>
               {children}
             </SidebarProvider>
           </ThemeProvider>
-        */}
+          
       </body>
     </html>
   );
