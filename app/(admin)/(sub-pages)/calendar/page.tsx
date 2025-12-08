@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import React from "react";
 
-// import Calender components
-// import Page breadcrumb
+import Calendar from "@/components/calendar/Calendar";
+import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 
 
 export const metadata: Metadata = {
@@ -13,11 +13,8 @@ export const metadata: Metadata = {
 export default function Page() {
     return (
         <div>
-            {/*
-                import Page breadcrumb
-
-                import Calendar element
-            */}
+            <PageBreadcrumb pageTitle="Calendar" />
+            <Calendar />
         </div>
     )
 }

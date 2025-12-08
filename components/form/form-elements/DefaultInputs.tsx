@@ -6,6 +6,7 @@ import Input from '../input/InputField';
 import Select from '../Select';
 import { ChevronDownIcon, EyeCloseIcon, EyeIcon, TimeIcon } from '../../../icons';
 import DatePicker from '@/components/form/date-picker';
+import Image from 'next/image';
 
 export default function DefaultInputs() {
   const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +39,8 @@ export default function DefaultInputs() {
             className="dark:bg-dark-900"
           />
              <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400">
-              <ChevronDownIcon/>
+              
+              <Image src={ChevronDownIcon as string} alt={ChevronDownIcon as string} />
             </span>
           </div>
         </div>
@@ -54,9 +56,9 @@ export default function DefaultInputs() {
               className="absolute z-30 -translate-y-1/2 cursor-pointer right-4 top-1/2"
             >
               {showPassword ? (
-                <EyeIcon className="fill-gray-500 dark:fill-gray-400" />
+                <Image src={EyeIcon as string} alt={EyeIcon as string} className="fill-gray-500 dark:fill-gray-400" />
               ) : (
-                <EyeCloseIcon className="fill-gray-500 dark:fill-gray-400" />
+                <Image src={EyeCloseIcon as string} alt={EyeCloseIcon as string} />
               )}
             </button>
           </div>
@@ -84,7 +86,7 @@ export default function DefaultInputs() {
               onChange={(e) => console.log(e.target.value)}
             />
             <span className="absolute text-gray-500 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400">
-              <TimeIcon />
+              <Image src={TimeIcon as string} alt={TimeIcon as string} />
             </span>
           </div>
         </div>

@@ -1,7 +1,7 @@
 
 import { Metadata } from "next";
 
-// import signup form 
+import SignUpForm from "@/components/auth/SignUpForm";
 
 export const metadata: Metadata = {
   title: "SignUp Page ",
@@ -12,9 +12,7 @@ export const metadata: Metadata = {
 export default function SignUp() {
   return (
     <>
-        {/*
-            render sign up form
-        */}
+        <SignUpForm />
     </>
   );
 }
