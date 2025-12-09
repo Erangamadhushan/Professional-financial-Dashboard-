@@ -21,7 +21,10 @@
     "@tailwindcss/postcss": "^4.1.17",
     "apexcharts": "^4.7.0",
     "autoprefixer": "^10.4.22",
+    "bcryptjs": "^3.0.3",
     "flatpickr": "^4.6.13",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.0.1",
     "next": "16.0.3",
     "react": "^19.2.0",
     "react-apexcharts": "^1.8.0",
@@ -30,9 +33,13 @@
     "react-dom": "^19.2.0",
     "react-dropzone": "^14.3.8",
     "swiper": "^11.2.10",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^2.6.0",
+    "zod": "^3.22.2",
+    "luxon": "^3.4.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jsonwebtoken": "^9.0.2",
     "@eslint/eslintrc": "^3.3.1",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.19.25",

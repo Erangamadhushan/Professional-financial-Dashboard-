@@ -17,8 +17,8 @@ export default function MonthlyIncomeChart() {
     colors: ["#465fff"],
     chart: {
       fontFamily: "Outfit, sans-serif",
-      type: "bar",
-      height: 180,
+      type: "pie",
+      height: 280,
       toolbar: {
         show: false,
       },
@@ -26,9 +26,9 @@ export default function MonthlyIncomeChart() {
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: "39%",
+        columnWidth: "40%",
         borderRadius: 5,
-        borderRadiusApplication: "end",
+        borderRadiusApplication:"end",
       },
     },
     dataLabels: {
@@ -78,6 +78,7 @@ export default function MonthlyIncomeChart() {
           show: true,
         },
       },
+      
     },
     fill: {
       opacity: 1,
@@ -95,7 +96,7 @@ export default function MonthlyIncomeChart() {
   const series = [
     {
       name: "Sales",
-      data: [168, 385, 201, 298, 187, 195, 291, 110, 215, 390, 280, 112],
+      data: [168000, 185000, 201000, 198000, 187000, 195000, 191000, 110000, 215000, 190000, 180000, 112000],
     },
   ];
   const [isOpen, setIsOpen] = useState(false);
@@ -112,7 +113,7 @@ export default function MonthlyIncomeChart() {
     <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white px-5 pt-5 dark:border-gray-800 dark:bg-white/[0.03] sm:px-6 sm:pt-6">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-          Monthly Sales
+          Monthly Expenses Value
         </h3>
 
         <div className="relative inline-block">
@@ -146,7 +147,7 @@ export default function MonthlyIncomeChart() {
             options={options}
             series={series}
             type="bar"
-            height={180}
+            height={250}
           />
         </div>
       </div>

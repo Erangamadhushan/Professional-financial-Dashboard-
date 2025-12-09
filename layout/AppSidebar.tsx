@@ -24,7 +24,7 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    icon: <Image src={GridIcon as string} alt="" className="" />,
+    icon: <Image src={GridIcon as string} alt="" className="text-white bg-transparent fill-white" />,
     name: "Dashboard",
     subItems: [{ name: "Ecommerce", path: "/", pro: false }],
   },
@@ -77,7 +77,7 @@ const AppSidebar = () => {
                   }`}
                 >
                   <span
-                    className={` ${
+                    className={`bg-white mix-blend-screen  ${
                       openSubmenu?.type === menuType && openSubmenu?.index === index
                         ? "menu-item-icon-active"
                         : "menu-item-icon-inactive"
