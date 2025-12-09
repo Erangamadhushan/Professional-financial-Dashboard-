@@ -5,7 +5,7 @@ import { EcommerceMetrics } from "@/components/ecommerce/EcommerceMetrics";
 import MonthlyTarget from "@/components/ecommerce/MonthlyTarget";
 import MonthlyIncomeChart from "@/components/ecommerce/MonthlyIncomeChart";
 import StatisticsChart from "@/components/ecommerce/StatisticsChart";
-import RecentOrders from "@/components/ecommerce/RecentOrders";
+import RecentOrders from "@/components/ecommerce/RecentTransactions";
 
 
 export const metadata: Metadata = {
@@ -40,9 +40,6 @@ export default function EcommerceView() {
 
                 <RecentOrders />
 
-            </div>
-            <div className="text-center text-white">
-                Dashboard
             </div>
         </div>
         

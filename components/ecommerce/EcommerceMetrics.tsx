@@ -16,15 +16,15 @@ export const EcommerceMetrics = () => {
         <div className="flex items-end justify-between mt-5">
           <div>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              Customers
+              Monthly Income (Rs.)
             </span>
-            <h4 className="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">
-              3,782
-            </h4>
+            <h5 className="mt-2 font-bold text-gray-800 text-[1.75em] dark:text-white/90">
+              240,000.00
+            </h5>
           </div>
           <Badge color="success">
             <Image src={ArrowUpIcon as string} alt="" />
-            11.01%
+            1.05%
           </Badge>
         </div>
       </div>
@@ -38,15 +38,15 @@ export const EcommerceMetrics = () => {
         <div className="flex items-end justify-between mt-5">
           <div>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              Orders
+              Expenses
             </span>
             <h4 className="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">
-              5,359
+              Rs. 185,000.00
             </h4>
           </div>
 
           <Badge color="error">
-            <Image src={ArrowDownIcon as string} alt="" className="text-error-500" />
+            <Image src={ArrowDownIcon as string} alt="" className="text-green-500" />
             9.05%
           </Badge>
         </div>

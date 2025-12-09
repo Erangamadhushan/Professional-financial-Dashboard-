@@ -1,64 +1,108 @@
-import React, { ReactNode } from "react";
+// components/ui/table.tsx
+import React from "react";
 
-// Props for Table
-interface TableProps {
-  children: ReactNode; // Table content (thead, tbody, etc.)
-  className?: string; // Optional className for styling
-}
-
-// Props for TableHeader
-interface TableHeaderProps {
-  children: ReactNode; // Header row(s)
-  className?: string; // Optional className for styling
-}
-
-// Props for TableBody
-interface TableBodyProps {
-  children: ReactNode; // Body row(s)
-  className?: string; // Optional className for styling
-}
-
-// Props for TableRow
-interface TableRowProps {
-  children: ReactNode; // Cells (th or td)
-  className?: string; // Optional className for styling
-}
-
-// Props for TableCell
-interface TableCellProps {
-  children: ReactNode; // Cell content
-  isHeader?: boolean; // If true, renders as <th>, otherwise <td>
-  className?: string; // Optional className for styling
-}
-
-// Table Component
-const Table: React.FC<TableProps> = ({ children, className }) => {
-  return <table className={`min-w-full  ${className}`}>{children}</table>;
+type HTMLTableProps = React.TableHTMLAttributes<HTMLTableElement>;
+type HTMLTBodyProps = React.HTMLAttributes<HTMLTableSectionElement>;
+type HTMLTheadProps = React.HTMLAttributes<HTMLTableSectionElement>;
+type HTMLTrProps = React.HTMLAttributes<HTMLTableRowElement>;
+type HTMLTdProps = React.TdHTMLAttributes<HTMLTableCellElement> & {
+  isHeader?: boolean;
 };
 
-// TableHeader Component
-const TableHeader: React.FC<TableHeaderProps> = ({ children, className }) => {
-  return <thead className={className}>{children}</thead>;
-};
+/**
+ * Table - wrapper around <table>
+ */
+export const Table = React.forwardRef<HTMLTableElement, HTMLTableProps>(
+  function Table({ className = "min-w-full", children, ...rest }, ref) {
+    return (
+      <div className={`w-full overflow-x-auto ${rest.style ? "" : ""}`}>
+        <table ref={ref} className={className} {...rest}>
+          {children}
+        </table>
+      </div>
+    );
+  }
+);
 
-// TableBody Component
-const TableBody: React.FC<TableBodyProps> = ({ children, className }) => {
-  return <tbody className={className}>{children}</tbody>;
-};
+Table.displayName = "Table";
 
-// TableRow Component
-const TableRow: React.FC<TableRowProps> = ({ children, className }) => {
-  return <tr className={className}>{children}</tr>;
-};
+/**
+ * TableHeader - wrapper for <thead>
+ */
+export const TableHeader = React.forwardRef<HTMLTableSectionElement, HTMLTheadProps>(
+  function TableHeader({ className = "", children, ...rest }, ref) {
+    return (
+      <thead ref={ref} className={className} {...rest}>
+        {children}
+      </thead>
+    );
+  }
+);
 
-// TableCell Component
-const TableCell: React.FC<TableCellProps> = ({
-  children,
-  isHeader = false,
-  className,
-}) => {
-  const CellTag = isHeader ? "th" : "td";
-  return <CellTag className={` ${className}`}>{children}</CellTag>;
-};
+TableHeader.displayName = "TableHeader";
 
-export { Table, TableHeader, TableBody, TableRow, TableCell };
+/**
+ * TableBody - wrapper for <tbody>
+ */
+export const TableBody = React.forwardRef<HTMLTableSectionElement, HTMLTBodyProps>(
+  function TableBody({ className = "", children, ...rest }, ref) {
+    return (
+      <tbody ref={ref} className={className} {...rest}>
+        {children}
+      </tbody>
+    );
+  }
+);
+
+TableBody.displayName = "TableBody";
+
+/**
+ * TableRow - wrapper for <tr>
+ */
+export const TableRow = React.forwardRef<HTMLTableRowElement, HTMLTrProps>(
+  function TableRow({ className = "", children, ...rest }, ref) {
+    return (
+      <tr ref={ref} className={className} {...rest}>
+        {children}
+      </tr>
+    );
+  }
+);
+
+TableRow.displayName = "TableRow";
+
+/**
+ * TableCell - renders <th> when isHeader=true, otherwise <td>
+ * Accepts colSpan, rowSpan, isHeader, className etc.
+ */
+export const TableCell = React.forwardRef<HTMLTableCellElement, HTMLTdProps>(
+  function TableCell({ isHeader = false, className = "", children, ...rest }, ref) {
+    if (isHeader) {
+      // Render <th>
+      return (
+        <th ref={ref as React.LegacyRef<HTMLTableHeaderCellElement>} className={className} {...(rest as React.ThHTMLAttributes<HTMLTableHeaderCellElement>)}>
+          {children}
+        </th>
+      );
+    }
+
+    return (
+      <td ref={ref} className={className} {...rest}>
+        {children}
+      </td>
+    );
+  }
+);
+
+TableCell.displayName = "TableCell";
+
+/**
+ * Default export for convenience (named exports are preferred).
+ */
+export default {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableCell,
+};

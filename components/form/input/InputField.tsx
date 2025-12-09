@@ -4,6 +4,7 @@ interface InputProps {
   type?: "text" | "number" | "email" | "password" | "date" | "time" | string;
   id?: string;
   name?: string;
+  value?:string
   placeholder?: string;
   defaultValue?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -14,6 +15,7 @@ interface InputProps {
   disabled?: boolean;
   success?: boolean;
   error?: boolean;
+  required?: boolean;
   hint?: string; // Optional hint text
 }
 
