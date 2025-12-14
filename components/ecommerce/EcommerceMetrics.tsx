@@ -18,7 +18,7 @@ export const EcommerceMetrics = () => {
             <span className="text-sm text-gray-500 dark:text-gray-400">
               Monthly Income (Rs.)
             </span>
-            <h5 className="mt-2 font-bold text-gray-800 text-[1.75em] dark:text-white/90">
+            <h5 className="mt-2 font-bold text-gray-800 text-[25px] dark:text-white/90">
               240,000.00
             </h5>
           </div>
@@ -40,7 +40,7 @@ export const EcommerceMetrics = () => {
             <span className="text-sm text-gray-500 dark:text-gray-400">
               Expenses
             </span>
-            <h4 className="mt-2 font-bold text-gray-800 text-title-sm dark:text-white/90">
+            <h4 className="mt-2 font-bold text-gray-800 text-[25px] dark:text-white/90">
               Rs. 185,000.00
             </h4>
           </div>

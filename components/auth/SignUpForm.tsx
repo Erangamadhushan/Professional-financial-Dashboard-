@@ -8,12 +8,14 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/useAuth";
 
 export default function SignUpForm() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
+  const { login } = useAuth();
   // form state
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -90,6 +92,9 @@ export default function SignUpForm() {
 
       // Save token (localStorage for simplicity). If you want cookies / httpOnly, set that on server.
       localStorage.setItem("token", token);
+      if (json?.user) {
+        login(json?.user?.id, json?.user?.email);
+      }
 
       setSuccess("Account created — redirecting...");
       // small delay so user sees the message

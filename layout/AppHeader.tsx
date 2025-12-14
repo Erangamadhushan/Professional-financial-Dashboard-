@@ -2,6 +2,7 @@
 import { ThemeToggleButton } from "@/components/common/ThemeToggleButton";
 import NotificationDropdown from "@/components/header/NotificationDropdown";
 import UserDropdown from "@/components/header/UserDropdown";
+import { useAuth } from "@/context/useAuth";
 import { useSidebar } from "@/context/SidebarContext";
 
 import Image from "next/image";
@@ -13,6 +14,8 @@ const AppHeader = () => {
     useState<boolean>(false);
 
   const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar();
+
+  const {user, loading, logout} = useAuth();
 
   const handleToggle = () => {
     if (window.innerWidth >= 1024) {

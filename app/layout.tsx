@@ -5,6 +5,7 @@ import "./globals.css";
 
 import { SidebarProvider } from '@/context/SidebarContext';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { AuthProvider } from '@/context/useAuth';
 
 const outfit = Outfit({
   subsets: ["latin"]
@@ -27,7 +28,9 @@ export default function RootLayout({
       >
           <ThemeProvider>
             <SidebarProvider>
-              {children}
+              <AuthProvider>
+                {children}
+              </AuthProvider>
             </SidebarProvider>
           </ThemeProvider>
           

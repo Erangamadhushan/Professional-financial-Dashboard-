@@ -6,10 +6,6 @@ export function signToken(payload: object) {
     return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN }); 
 }
 
-export function verifyToken(token: string) { 
-    try { 
-        return jwt.verify(token, JWT_SECRET) as any; 
-    } catch (err) { 
-        return null; 
-    } 
+export function verifyToken(token: string): { id: string; email: string } {
+    return jwt.verify(token, process.env.JWT_SECRET!) as { id: string; email: string };
 }

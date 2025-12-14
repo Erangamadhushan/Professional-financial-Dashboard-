@@ -6,9 +6,10 @@ import Label from "@/components/form/Label";
 import Button from "@/components/ui/button/Button";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useActionState, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/useAuth";
 
 export default function SignInForm() {
   const router = useRouter();
@@ -18,6 +19,8 @@ export default function SignInForm() {
   // form state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { login } = useAuth();
 
   // UI state
   const [loading, setLoading] = useState(false);
@@ -81,13 +84,16 @@ export default function SignInForm() {
 
       // Save token locally (simple approach). For production prefer httpOnly cookie set server-side.
       localStorage.setItem("token", token);
+      if (json?.user) {
+        login(json?.user?.id, json?.user?.email);
+      }
 
       // Optionally save a 'keep logged in' flag
       if (isChecked) localStorage.setItem("keepLoggedIn", "1");
       else localStorage.removeItem("keepLoggedIn");
 
-      // redirect to dashboard/home
-      router.push("/");
+      // redirect to profile page
+      router.push("/profile");
     } catch (err: any) {
       setError(err?.message || "Network error");
     } finally {
